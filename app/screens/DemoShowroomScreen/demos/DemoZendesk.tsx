@@ -65,7 +65,7 @@ const SupportSDKDemo: FC = () => {
 
   const openHelpCenter = async () => {
     try {
-      await expoZendesk?.openHelpCenter({
+      await expoZendesk.openHelpCenter({
         labels: ["test"],
         groupType: "section",
         groupIds: [15138052595485],
@@ -87,9 +87,9 @@ const SupportSDKDemo: FC = () => {
 
   const openNewTicket = async () => {
     try {
-      await expoZendesk?.openNewTicket({
-        subject: "Testing subjet passed from app",
-        tags: ["test"],
+      await expoZendesk.openNewTicket({
+        subject: "How does the app work?",
+        tags: ["app", "test"],
       })
     } catch (error) {
       console.log(error)
@@ -98,7 +98,7 @@ const SupportSDKDemo: FC = () => {
 
   const listTickets = async () => {
     try {
-      await expoZendesk?.listTickets()
+      await expoZendesk.listTickets()
     } catch (error) {
       console.log(error)
     }
@@ -106,7 +106,7 @@ const SupportSDKDemo: FC = () => {
 
   const openArticle = async () => {
     try {
-      await expoZendesk?.openArticle({
+      await expoZendesk.openArticle({
         articleId: 15138112850333,
       })
     } catch (error) {

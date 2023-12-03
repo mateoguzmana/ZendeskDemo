@@ -74,8 +74,9 @@ buck-out/
 bin/Exponent.app
 
 # If using Expo Go/Prebuild, uncomment these:
-android
-ios
+# TODO: because we are looking into having this as straight forward as possible, check later on if we can uncomment this again
+# android
+# ios
 
 npm-debug.*
 *.jks
