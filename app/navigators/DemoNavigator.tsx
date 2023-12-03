@@ -48,14 +48,15 @@ export function DemoNavigator() {
         name="DemoShowroom"
         component={DemoShowroomScreen}
         options={{
-          tabBarLabel: translate("demoNavigator.componentsTab"),
+          // tabBarLabel: translate("demoNavigator.componentsTab"),
+          tabBarLabel: "Demo",
           tabBarIcon: ({ focused }) => (
             <Icon icon="components" color={focused ? colors.tint : undefined} size={30} />
           ),
         }}
       />
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="DemoCommunity"
         component={DemoCommunityScreen}
         options={{
@@ -64,9 +65,9 @@ export function DemoNavigator() {
             <Icon icon="community" color={focused ? colors.tint : undefined} size={30} />
           ),
         }}
-      />
+      /> */}
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="DemoPodcastList"
         component={DemoPodcastListScreen}
         options={{
@@ -76,9 +77,9 @@ export function DemoNavigator() {
             <Icon icon="podcast" color={focused ? colors.tint : undefined} size={30} />
           ),
         }}
-      />
+      /> */}
 
-      <Tab.Screen
+      {/* <Tab.Screen
         name="DemoDebug"
         component={DemoDebugScreen}
         options={{
@@ -87,7 +88,7 @@ export function DemoNavigator() {
             <Icon icon="debug" color={focused ? colors.tint : undefined} size={30} />
           ),
         }}
-      />
+      /> */}
     </Tab.Navigator>
   )
 }

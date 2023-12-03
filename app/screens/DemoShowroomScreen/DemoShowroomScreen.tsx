@@ -1,6 +1,6 @@
 import { Link, RouteProp, useRoute } from "@react-navigation/native"
 import React, { FC, ReactElement, useEffect, useRef, useState } from "react"
-import { Image, ImageStyle, Platform, SectionList, TextStyle, View, ViewStyle } from "react-native"
+import { Platform, SectionList, TextStyle, View, ViewStyle } from "react-native"
 import { Drawer } from "react-native-drawer-layout"
 import { type ContentStyle } from "@shopify/flash-list"
 import { ListItem, ListView, ListViewRef, Screen, Text } from "../../components"
@@ -10,8 +10,6 @@ import { colors, spacing } from "../../theme"
 import { useSafeAreaInsetsStyle } from "../../utils/useSafeAreaInsetsStyle"
 import * as Demos from "./demos"
 import { DrawerIconButton } from "./DrawerIconButton"
-
-const logo = require("../../../assets/images/logo.png")
 
 export interface Demo {
   name: string
@@ -152,10 +150,6 @@ export const DemoShowroomScreen: FC<DemoTabScreenProps<"DemoShowroom">> =
         drawerPosition={isRTL ? "right" : "left"}
         renderDrawerContent={() => (
           <View style={[$drawer, $drawerInsets]}>
-            <View style={$logoContainer}>
-              <Image source={logo} style={$logoImage} />
-            </View>
-
             <ListView<DemoListItem["item"]>
               ref={menuRef}
               contentContainerStyle={$listContentContainer}
@@ -213,22 +207,6 @@ const $listContentContainer: ContentStyle = {
 }
 
 const $sectionListContentContainer: ViewStyle = {
-  paddingHorizontal: spacing.lg,
-}
-
-const $heading: ViewStyle = {
-  marginBottom: spacing.xxxl,
-}
-
-const $logoImage: ImageStyle = {
-  height: 42,
-  width: 77,
-}
-
-const $logoContainer: ViewStyle = {
-  alignSelf: "flex-start",
-  justifyContent: "center",
-  height: 56,
   paddingHorizontal: spacing.lg,
 }
 
