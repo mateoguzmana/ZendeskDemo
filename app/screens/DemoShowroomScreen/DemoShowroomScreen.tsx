@@ -182,11 +182,6 @@ export const DemoShowroomScreen: FC<DemoTabScreenProps<"DemoShowroom">> =
             sections={Object.values(Demos)}
             renderItem={({ item }) => item}
             renderSectionFooter={() => <View style={$demoUseCasesSpacer} />}
-            ListHeaderComponent={
-              <View style={$heading}>
-                <Text preset="heading" tx="demoShowroomScreen.jumpStart" />
-              </View>
-            }
             onScrollToIndexFailed={scrollToIndexFailed}
             renderSectionHeader={({ section }) => {
               return (

@@ -47,6 +47,7 @@
     "expo-localization": "~14.5.0",
     "expo-splash-screen": "~0.20.4",
     "expo-status-bar": "~1.6.0",
+    "expo-zendesk": "^0.0.1-alpha.1",
     "i18n-js": "3.9.2",
     "mobx": "6.10.2",
     "mobx-react-lite": "4.0.5",

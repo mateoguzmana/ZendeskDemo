@@ -30,6 +30,7 @@ import { customFontsToLoad } from "./theme"
 import Config from "./config"
 import { GestureHandlerRootView } from "react-native-gesture-handler"
 import { ViewStyle } from "react-native"
+import { ExpoZendeskProvider, ZendeskConfig } from "expo-zendesk"
 
 export const NAVIGATION_PERSISTENCE_KEY = "NAVIGATION_STATE"
 
@@ -52,6 +53,12 @@ const config = {
       },
     },
   },
+}
+
+export const zendeskConfig: ZendeskConfig = {
+  appId: process.env.EXPO_PUBLIC_ZENDESK_APP_ID,
+  clientId: process.env.EXPO_PUBLIC_ZENDESK_CLIENT_ID,
+  zendeskUrl: process.env.EXPO_PUBLIC_ZENDESK_URL,
 }
 
 interface AppProps {
@@ -99,11 +106,13 @@ function App(props: AppProps) {
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       <ErrorBoundary catchErrors={Config.catchErrors}>
         <GestureHandlerRootView style={$container}>
-          <AppNavigator
-            linking={linking}
-            initialState={initialNavigationState}
-            onStateChange={onNavigationStateChange}
-          />
+          <ExpoZendeskProvider zendeskConfig={zendeskConfig}>
+            <AppNavigator
+              linking={linking}
+              initialState={initialNavigationState}
+              onStateChange={onNavigationStateChange}
+            />
+          </ExpoZendeskProvider>
         </GestureHandlerRootView>
       </ErrorBoundary>
     </SafeAreaProvider>
