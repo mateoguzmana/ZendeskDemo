@@ -1,8 +1,7 @@
-/* eslint-disable react/jsx-key */
 import { colors } from "app/theme"
 import { spacing } from "app/theme/spacing"
-import { useExpoZendesk } from "expo-zendesk"
-import React, { FC, useEffect } from "react"
+import { useZendesk } from "react-native-zendesk-unified"
+import React, { FC, useCallback, useEffect } from "react"
 import { ViewStyle, TextStyle, Pressable, View, Alert } from "react-native"
 import { Icon, IconTypes, Text } from "../../../components"
 import { Demo } from "../DemoShowroomScreen"
@@ -61,11 +60,25 @@ const IconTile: FC<IconTileProps> = ({ icon, label, onPress }) => (
 const Row: FC<React.PropsWithChildren> = ({ children }) => <View style={$row}>{children}</View>
 
 const SupportSDKDemo: FC = () => {
-  const expoZendesk = useExpoZendesk()
+  const zendesk = useZendesk()
+
+  const [healthCheck, setHealthCheck] = React.useState<string | undefined>()
+
+  const loadHealthCheck = useCallback(async () => {
+    try {
+      const healthCheckResult = await zendesk.healthCheck()
+
+      setHealthCheck(healthCheckResult)
+    } catch (error) {
+      if (error instanceof Error) {
+        setHealthCheck(error.message)
+      }
+    }
+  }, [zendesk])
 
   const openHelpCenter = async () => {
     try {
-      await expoZendesk.openHelpCenter({
+      await zendesk.openHelpCenter({
         labels: ["test"],
         groupType: "section",
         groupIds: [15138052595485],
@@ -77,9 +90,7 @@ const SupportSDKDemo: FC = () => {
 
   const openTicket = async () => {
     try {
-      await expoZendesk?.openTicket({
-        ticketId: "28",
-      })
+      await zendesk?.openTicket("28")
     } catch (error) {
       console.log(error)
     }
@@ -87,7 +98,7 @@ const SupportSDKDemo: FC = () => {
 
   const openNewTicket = async () => {
     try {
-      await expoZendesk.openNewTicket({
+      await zendesk.openNewTicket({
         subject: "How does the app work?",
         tags: ["app", "test"],
       })
@@ -98,7 +109,7 @@ const SupportSDKDemo: FC = () => {
 
   const listTickets = async () => {
     try {
-      await expoZendesk.listTickets()
+      await zendesk.listTickets()
     } catch (error) {
       console.log(error)
     }
@@ -106,26 +117,25 @@ const SupportSDKDemo: FC = () => {
 
   const openArticle = async () => {
     try {
-      await expoZendesk.openArticle({
-        articleId: 15138112850333,
-      })
+      await zendesk.openArticle(15138112850333)
     } catch (error) {
       console.log(error)
     }
   }
 
   useEffect(() => {
-    expoZendesk.changeTheme("#3f2b96")
-    expoZendesk.setAnonymousIdentity({
+    loadHealthCheck()
+    zendesk.changeTheme("#FF0000")
+    zendesk.setAnonymousIdentity({
       email: "testing6@mail.com",
       name: "Mateo Guzmán",
     })
-    expoZendesk.setHelpCenterLocaleOverride("nl")
+    zendesk.setHelpCenterLocaleOverride("nl")
   }, [])
 
   return (
     <>
-      <Text style={$centeredText}>🛠️ {expoZendesk.healthCheck()}</Text>
+      <Text style={$centeredText}>🛠️ {healthCheck}</Text>
 
       <Row>
         <IconTile icon="ladybug" label="Open Help Center" onPress={openHelpCenter} />

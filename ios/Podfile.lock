@@ -21,9 +21,6 @@ PODS:
     - React-NativeModulesApple
     - React-RCTAppDelegate
     - ReactCommon/turbomodule/core
-  - ExpoZendesk (0.0.1-alpha.1):
-    - ExpoModulesCore
-    - ZendeskSupportSDK (~> 8.0.0)
   - EXSplashScreen (0.20.5):
     - ExpoModulesCore
     - RCT-Folly (= 2021.07.22.00)
@@ -348,6 +345,12 @@ PODS:
     - RCTTypeSafety
     - React-Core
     - ReactCommon/turbomodule/core
+  - react-native-zendesk-unified (0.0.1-alpha.1):
+    - RCT-Folly (= 2021.07.22.00)
+    - React-Core
+    - ZendeskAnswerBotSDK
+    - ZendeskChatSDK
+    - ZendeskSupportSDK (~> 8.0.0)
   - React-NativeModulesApple (0.72.7):
     - hermes-engine
     - React-callinvoker
@@ -498,6 +501,15 @@ PODS:
     - React-RCTImage
   - SocketRocket (0.6.1)
   - Yoga (1.14.0)
+  - ZendeskAnswerBotProvidersSDK (5.0.0):
+    - ZendeskSupportProvidersSDK (~> 8.0.0)
+  - ZendeskAnswerBotSDK (5.0.0):
+    - ZendeskAnswerBotProvidersSDK (~> 5.0.0)
+    - ZendeskMessagingSDK (~> 6.0.0)
+  - ZendeskChatProvidersSDK (5.0.0)
+  - ZendeskChatSDK (5.0.0):
+    - ZendeskChatProvidersSDK (~> 5.0.0)
+    - ZendeskMessagingSDK (~> 6.0.0)
   - ZendeskCommonUISDK (9.0.0)
   - ZendeskCoreSDK (5.0.0)
   - ZendeskMessagingAPISDK (6.0.0):
@@ -523,7 +535,6 @@ DEPENDENCIES:
   - ExpoKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - ExpoLocalization (from `../node_modules/expo-localization/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core`)
-  - ExpoZendesk (from `../node_modules/expo-zendesk/ios`)
   - EXSplashScreen (from `../node_modules/expo-splash-screen/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
@@ -547,6 +558,7 @@ DEPENDENCIES:
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-zendesk-unified (from `../node_modules/react-native-zendesk-unified`)
   - React-NativeModulesApple (from `../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -576,6 +588,10 @@ SPEC REPOS:
     - fmt
     - libevent
     - SocketRocket
+    - ZendeskAnswerBotProvidersSDK
+    - ZendeskAnswerBotSDK
+    - ZendeskChatProvidersSDK
+    - ZendeskChatSDK
     - ZendeskCommonUISDK
     - ZendeskCoreSDK
     - ZendeskMessagingAPISDK
@@ -605,8 +621,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-localization/ios"
   ExpoModulesCore:
     :path: "../node_modules/expo-modules-core"
-  ExpoZendesk:
-    :path: "../node_modules/expo-zendesk/ios"
   EXSplashScreen:
     :path: "../node_modules/expo-splash-screen/ios"
   FBLazyVector:
@@ -650,6 +664,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/logger"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-zendesk-unified:
+    :path: "../node_modules/react-native-zendesk-unified"
   React-NativeModulesApple:
     :path: "../node_modules/react-native/ReactCommon/react/nativemodule/core/platform/ios"
   React-perflogger:
@@ -708,7 +724,6 @@ SPEC CHECKSUMS:
   ExpoKeepAwake: be4cbd52d9b177cde0fd66daa1913afa3161fc1d
   ExpoLocalization: 2d5f47577d67ce991ebdd951edf14fe1db85fa06
   ExpoModulesCore: c480fd4e3c7c8e81f0a6ba3a7c56869f25fe016d
-  ExpoZendesk: 20982dd4c8e172fa160279e3b00d70355805e51b
   EXSplashScreen: c0e7f2d4a640f3b875808ed0b88575538daf6d82
   FBLazyVector: 5fbbff1d7734827299274638deb8ba3024f6c597
   FBReactNativeSpec: 638095fe8a01506634d77b260ef8a322019ac671
@@ -732,6 +747,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 8baadae51f01d867c3921213a25ab78ab4fbcd91
   React-logger: 8edc785c47c8686c7962199a307015e2ce9a0e4f
   react-native-safe-area-context: 36cc67648134e89465663b8172336a19eeda493d
+  react-native-zendesk-unified: 3d839f65c262ea37e8e6383babbb4a9bf5ffe505
   React-NativeModulesApple: b6868ee904013a7923128892ee4a032498a1024a
   React-perflogger: 31ea61077185eb1428baf60c0db6e2886f141a5a
   React-RCTActionSheet: 392090a3abc8992eb269ef0eaa561750588fc39d
@@ -756,6 +772,10 @@ SPEC CHECKSUMS:
   RNScreens: 50ffe2fa2342eabb2d0afbe19f7c1af286bc7fb3
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: 4c3aa327e4a6a23eeacd71f61c81df1bcdf677d5
+  ZendeskAnswerBotProvidersSDK: a024260282886870a15e7a986bf5286c23fd9311
+  ZendeskAnswerBotSDK: b9f74105b26fda5f74d6639c0dc8fe37f522a867
+  ZendeskChatProvidersSDK: fa1c5acd7fd09157b5994fb05a3b1628409fdfd1
+  ZendeskChatSDK: 40fa26f80a589eb38c6cecf17af71206da7bcaf3
   ZendeskCommonUISDK: b87f90874386ebcc01f4b2a0b20a28c62658987a
   ZendeskCoreSDK: cdc814e7fd64764fb0b0acb04e596df437708faa
   ZendeskMessagingAPISDK: 9ce539eebcaa014fe6acc44da31262a2c52891c1
