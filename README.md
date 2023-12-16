@@ -1,4 +1,4 @@
-# Expo Zendesk Demo
+# React Native Zendesk Unified Demo
 
 Usage demo of the [react-native-zendesk-unified](https://github.com/mateoguzmana/react-native-zendesk-unified) library for iOS and Android
 

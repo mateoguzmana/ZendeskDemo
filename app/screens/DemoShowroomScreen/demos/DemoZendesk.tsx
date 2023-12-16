@@ -2,7 +2,7 @@ import { colors } from "app/theme"
 import { spacing } from "app/theme/spacing"
 import { useZendesk } from "react-native-zendesk-unified"
 import React, { FC, useCallback, useEffect } from "react"
-import { ViewStyle, TextStyle, Pressable, View, Alert } from "react-native"
+import { ViewStyle, TextStyle, Pressable, View } from "react-native"
 import { Icon, IconTypes, Text } from "../../../components"
 import { Demo } from "../DemoShowroomScreen"
 import { DemoUseCase } from "../DemoUseCase"
@@ -155,30 +155,88 @@ const SupportSDKDemo: FC = () => {
 }
 
 const ChatSDKDemo: FC = () => {
-  const openChat = async () => {
-    Alert.alert("Open Chat")
+  const zendesk = useZendesk()
+
+  const startChat = async () => {
+    try {
+      await zendesk.startChat({
+        botName: "Testing Bot",
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const startChatWithAgentAvailability = async () => {
+    try {
+      await zendesk.startChat({
+        agentAvailabilityEnabled: false,
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
-    <Row>
-      <IconTile icon="menu" label="Open Chat" onPress={openChat} />
-    </Row>
+    <>
+      <Row>
+        <IconTile icon="community" label="Start Chat" onPress={startChat} />
+
+        <IconTile
+          icon="caretRight"
+          label="Agent availability disabled"
+          onPress={startChatWithAgentAvailability}
+        />
+      </Row>
+    </>
+  )
+}
+
+const AnswerBotSDKDemo: FC = () => {
+  const zendesk = useZendesk()
+
+  const startAnswerBot = async () => {
+    try {
+      await zendesk?.startAnswerBot()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  return (
+    <>
+      <Row>
+        <IconTile icon="community" label="Start Answer Bot" onPress={startAnswerBot} />
+      </Row>
+    </>
   )
 }
 
 export const DemoZendesk: Demo = {
-  name: "Expo Zendesk",
+  name: "React Native Zendesk Unified",
   description:
-    "Expo Zendesk is a React Native wrapper around the Zendesk SDKs for Android and iOS.",
+    "React Native Zendesk Unified is a React Native wrapper around the Zendesk SDKs for Android and iOS.",
   data: [
     <DemoUseCase
       name="Support SDK"
       description="Here are some examples of using Zendesk Support SDK"
+      key="support-sdk"
     >
       <SupportSDKDemo />
     </DemoUseCase>,
-    <DemoUseCase name="Chat SDK" description="Coming soon!">
+    <DemoUseCase
+      name="Chat SDK"
+      description="Here are some examples of using Zendesk Chat SDK"
+      key="chat-sdk"
+    >
       <ChatSDKDemo />
+    </DemoUseCase>,
+    <DemoUseCase
+      name="Answer Bot SDK"
+      description="Here are some examples of using Zendesk Answer Bot SDK"
+      key="answer-bot-sdk"
+    >
+      <AnswerBotSDKDemo />
     </DemoUseCase>,
   ],
 }
